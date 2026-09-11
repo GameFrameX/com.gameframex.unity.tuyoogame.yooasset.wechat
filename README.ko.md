@@ -2,18 +2,23 @@
 
 <img src="https://download.alianblank.com/gameframex/gameframex_logo_320.png" alt="Game Frame X Logo" width="160" />
 
-# Game Frame X YooAsset MiniGame WeChat
+# Game Frame X YooAsset WeChat
 
-[![License](https://img.shields.io/github/license/GameFrameX/com.gameframex.unity.tuyoogame.yooasset.minigame.wechat)](https://github.com/GameFrameX/com.gameframex.unity.tuyoogame.yooasset.minigame.wechat/blob/main/LICENSE.md)
-[![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.tuyoogame.yooasset.minigame.wechat)](https://github.com/GameFrameX/com.gameframex.unity.tuyoogame.yooasset.minigame.wechat/releases)
+[![License](https://img.shields.io/badge/license-blue.svg)](LICENSE.md)
+[![Version](https://img.shields.io/github/v/release/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat)](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/releases)
 [![Unity Version](https://img.shields.io/badge/Unity-2019.4-black?logo=unity)](https://unity.com/)
 [![Documentation](https://img.shields.io/badge/Documentation-docs-blue)](https://gameframex.doc.alianblank.com)
+
+[![Discord](https://img.shields.io/badge/-5865F2?logo=discord&logoColor=white)](https://discord.gg/VDWUjWMDw9)
+[![GitHub](https://img.shields.io/badge/-181717?logo=github&logoColor=white)](https://github.com/GameFrameX/gameframex)
+[![Bilibili](https://img.shields.io/badge/-00A1D6?logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1yrpeepEn7)
+[![Gitee](https://img.shields.io/badge/-C71D23?logo=gitee&logoColor=white)](https://gitee.com/GameFrameX/gameframex)
 
 인디 게임 개발자를 위한 올인원 솔루션 · 인디 개발자의 꿈을 실현
 
 <br />
 
-[문서](https://gameframex.doc.alianblank.com) · [빠른 시작](#quick-start) · QQ 그룹: 467608841 / 233840761
+[문서](https://gameframex.doc.alianblank.com) · [빠른 시작](#빠른-시작) · QQ 그룹: 467608841 / 233840761
 
 <br />
 
@@ -23,21 +28,14 @@
 
 ## 프로젝트 개요
 
-GameFrameX의 YooAsset WeChat 미니게임 런타임 컴포넌트로, Unity WebGL 플랫폼을 대상으로 WeChat 미니게임 파일 시스템 및 애셋 번들 로딩 워크플로우에 대한 어댑터 구현을 제공합니다.
+WeChat 미니게임 플랫폼용 YooAsset 어댑터 패키지. Unity WebGL 플랫폼에서 동작하는 WeChat 미니게임을 위해 YooAsset `IFileSystem` 어댑터, AssetBundle 다운로드/캐시 워크플로우, WeChat 미니게임 SDK 통합을 제공합니다.
 
-## 기능 특징
+## 기능
 
-- WeChat 미니게임 전용 IFileSystem 구현 제공
-- WeChat 미니게임 SDK의 AssetBundle 다운로드 및 캐싱 워크플로우에 대응
-- 패키지 버전 요청, 매니페스트 로딩, 애셋 번들 다운로드 및 로딩 지원
-- 원격 서비스 및 복호화 서비스 연동 가능
-
-## 실행 환경
-
-- Unity 2019.4
-- 플랫폼: UNITY_WEBGL
-- 조건부 컴파일: WECHATMINIGAME
-- 의존성: YooAsset, StarkWebGL, WXWebGL
+- WeChat 미니게임 전용 `IFileSystem` 구현 제공.
+- WeChat 미니게임 SDK 기반의 AssetBundle 다운로드 및 캐시 워크플로우 통합.
+- 패키지 버전 요청, 매니페스트 로딩, 번들 다운로드/로딩 지원.
+- 플러그인 방식의 원격 서비스 및 복호화 서비스 연동.
 
 ## 빠른 시작
 
@@ -45,7 +43,7 @@ GameFrameX의 YooAsset WeChat 미니게임 런타임 컴포넌트로, Unity WebG
 
 다음 방법 중 하나를 선택하세요:
 
-1. Unity 프로젝트의 `Packages/manifest.json`을 편집하여 `scopedRegistries` 섹션을 추가하세요:
+1. Unity 프로젝트의 `Packages/manifest.json`을 편집하고 `scopedRegistries` 섹션을 추가하세요:
    ```json
    {
      "scopedRegistries": [
@@ -58,67 +56,61 @@ GameFrameX의 YooAsset WeChat 미니게임 런타임 컴포넌트로, Unity WebG
        }
      ],
      "dependencies": {
-       "com.gameframex.unity.tuyoogame.yooasset.minigame.wechat": "1.0.0"
+       "com.gameframex.unity.tuyoogame.yooasset.wechat": "1.0.2"
      }
    }
    ```
 
-   `scopes`는 이 레지스트리를 통해 어떤 패키지를 해석할지 제어합니다. `com.gameframex`로 시작하는 패키지만 이 레지스트리에서 가져옵니다.
+   `scopes`는 이 레지스트리를 통해 해석될 패키지를 제어합니다. `com.gameframex`로 시작하는 패키지만 이 레지스트리에서 가져옵니다.
 
-2. `manifest.json`의 `dependencies`에 직접 추가:
+2. `manifest.json`의 `dependencies`에 직접 추가하세요:
    ```json
    {
-      "com.gameframex.unity.tuyoogame.yooasset.minigame.wechat": "https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.minigame.wechat.git"
+      "com.gameframex.unity.tuyoogame.yooasset.wechat": "https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat.git"
    }
    ```
-3. Unity의 **Package Manager**에서 **Git URL**을 사용하여 추가: `https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.minigame.wechat.git`
-4. 리포지토리를 Unity 프로젝트의 `Packages` 디렉토리에 클론하세요. 자동으로 로드됩니다.
-### 설치
+3. Unity **Package Manager**에서 **Git URL**을 사용해 추가합니다. URL: `https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat.git`
+4. 리포지토리를 Unity 프로젝트의 `Packages` 디렉토리에 직접 클론하세요. 자동으로 로드됩니다.
 
-Unity 프로젝트의 `Packages/manifest.json`을 편집하여 `scopedRegistries` 섹션을 추가하세요:
+## 사용 예시
 
-```json
-{
-  "scopedRegistries": [
-    {
-      "name": "GameFrameX",
-      "url": "https://gameframex.upm.alianblank.uk",
-      "scopes": [
-        "com.gameframex"
-      ]
-    }
-  ]
-}
+팩토리 메서드로 파일 시스템 매개변수를 생성하고 YooAsset 초기화 워크플로우에 연결합니다:
+
+```csharp
+using YooAsset;
+
+var createParameters = new WebPlayModeParameters();
+createParameters.WebFileSystemParameters = WechatFileSystemCreater.CreateWechatFileSystemParameters(remoteServices);
 ```
 
-`scopes`는 이 레지스트리를 통해 어떤 패키지를 해석할지 제어합니다. `com.gameframex`로 시작하는 패키지만 이 레지스트리에서 가져옵니다.
+## 의존성
 
-Then add the package to `dependencies`:
+| 패키지 | 설명 |
+| --- | --- |
+| `com.gameframex.unity.tuyoogame.yooasset` | YooAsset 코어 런타임 및 API. |
+| `com.gameframex.unity.asset` | GameFrameX 에셋/런타임 통합. |
 
-```json
-{
-  "dependencies": {
-    "com.gameframex.unity.tuyoogame.yooasset.minigame.wechat": "1.0.0"
-  }
-}
-```
+## 문서 및 자료
 
+- [공식 문서](https://gameframex.doc.alianblank.com)
 
-## 사용 방법
+## 커뮤니티 및 지원
 
-1. WeChat 미니게임 SDK가 통합되어 있고 `WECHATMINIGAME` 매크로가 활성화되어 있는지 확인
-2. `WechatFileSystemCreater.CreateFileSystemParameters(...)`로 파일 시스템 매개변수 생성
-3. 매개변수를 YooAsset의 파일 시스템 생성 워크플로우에 전달
-4. YooAsset의 표준 워크플로우에 따라 초기화, 버전 요청, 매니페스트 로딩 및 애셋 로딩 수행
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/GameFrameX/gameframex)
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/VDWUjWMDw9)
+[<img src="https://cdn.jsdelivr.net/npm/devicon@2/icons/linkedin/linkedin-original.svg" height="28" alt="LinkedIn" />](https://www.linkedin.com/in/alianblank)
+[![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white)](https://www.reddit.com/r/GameFrameX/)
+[![X](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/alian_blank)
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/channel/UCD9QhSFJ5xZkn5NTSV-DVAw)
+[![Bluesky](https://img.shields.io/badge/Bluesky-0285FF?style=for-the-badge&logo=bluesky&logoColor=white)](https://bsky.app/profile/alianblank.bsky.social)
+[![Bilibili](https://img.shields.io/badge/Bilibili-00A1D6?style=for-the-badge&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1yrpeepEn7)
+[![Gitee](https://img.shields.io/badge/Gitee-C71D23?style=for-the-badge&logo=gitee&logoColor=white)](https://gitee.com/GameFrameX/gameframex)
+![QQ](https://img.shields.io/badge/QQ-467608841%2F233840761-EB1923?style=for-the-badge&logo=qq&logoColor=white)
 
-## 주요 타입
+## 변경 로그
 
-- `WechatFileSystem`: WeChat 미니게임 파일 시스템 구현
-- `WechatFileSystemCreater`: 파일 시스템 매개변수 빌더 진입점
-- `LoadWechatAssetBundleOperation`: 애셋 번들 다운로드 및 로딩 작업
-- `UnityWechatAssetBundleRequestOperation`: WeChat 미니게임 SDK 기반 다운로드 요청 래퍼
+변경 로그는 [Releases](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/releases)를 확인하세요.
 
-## 주의 사항
+## 라이선스
 
-- WeChat 미니게임의 캐시 루트 디렉토리를 설정해야 합니다. 그렇지 않으면 예외가 발생합니다
-- 원격 서비스가 구성되지 않은 경우 웹 서버 경로로 대체됩니다
+자세한 내용은 [LICENSE.md](LICENSE.md) 파일을 참조하세요.
