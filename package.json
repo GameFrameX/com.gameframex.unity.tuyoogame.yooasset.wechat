@@ -1,16 +1,16 @@
 {
-  "name": "com.gameframex.unity.tuyoogame.yooasset.minigame.wechat",
-  "displayName": "Game Frame X YooAsset MiniGame WeChat",
+  "name": "com.gameframex.unity.tuyoogame.yooasset.wechat",
+  "displayName": "Game Frame X YooAsset WeChat",
   "category": "Game Framework X",
-  "description": "Game Frame X YooAsset MiniGame WeChat Component",
+  "description": "YooAsset WeChat mini-game FileSystem adapter | YooAsset 微信小游戏适配",
   "version": "1.0.2",
   "unity": "2019.4",
   "keywords": [
     "GameFrameX"
   ],
   "repository": {
-    "name": "com.gameframex.unity.tuyoogame.yooasset.minigame.wechat",
-    "url": "git+https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.minigame.wechat.git",
+    "name": "com.gameframex.unity.tuyoogame.yooasset.wechat",
+    "url": "git+https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat.git",
     "type": "git"
   },
   "author": {
@@ -19,7 +19,8 @@
     "url": "https://alianblank.com/"
   },
   "dependencies": {
-    "com.gameframex.unity.tuyoogame.yooasset": "2.9.4"
+    "com.gameframex.unity.tuyoogame.yooasset": "2.9.4",
+    "com.gameframex.unity.asset": "3.1.1"
   },
   "publishConfig": {
     "access": "public",
@@ -31,6 +32,6 @@
     "@semantic-release/git": "^10.0.1"
   },
   "documentationUrl": "https://gameframex.doc.alianblank.com",
-  "changelogUrl": "https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.minigame.wechat/blob/main/CHANGELOG.md",
-  "licensesUrl": "https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.minigame.wechat/blob/main/LICENSE.md"
+  "changelogUrl": "https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/blob/main/LICENSE.md"
 }

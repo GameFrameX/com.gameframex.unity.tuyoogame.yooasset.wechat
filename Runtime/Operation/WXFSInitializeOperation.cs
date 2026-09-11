@@ -1,20 +1,28 @@
-﻿#if UNITY_WEBGL && WEIXINMINIGAME
+#if UNITY_WEBGL && ENABLE_WECHAT_MINI_GAME && WEIXINMINIGAME
+
 using YooAsset;
 
-internal partial class WXFSInitializeOperation : FSInitializeFileSystemOperation
+namespace YooAsset.WeChat
 {
-    private readonly WechatFileSystem _fileSystem;
+    [UnityEngine.Scripting.Preserve]
+    internal partial class WXFSInitializeOperation : FSInitializeFileSystemOperation
+    {
+        private readonly WechatFileSystem _fileSystem;
 
-    public WXFSInitializeOperation(WechatFileSystem fileSystem)
-    {
-        _fileSystem = fileSystem;
-    }
-    protected override void InternalStart()
-    {
-        Status = EOperationStatus.Succeed;
-    }
-    protected override void InternalUpdate()
-    {
+        [UnityEngine.Scripting.Preserve]
+        public WXFSInitializeOperation(WechatFileSystem fileSystem)
+        {
+            _fileSystem = fileSystem;
+        }
+        [UnityEngine.Scripting.Preserve]
+        public override void InternalOnStart()
+        {
+            Status = EOperationStatus.Succeed;
+        }
+        [UnityEngine.Scripting.Preserve]
+        public override void InternalOnUpdate()
+        {
+        }
     }
 }
 #endif

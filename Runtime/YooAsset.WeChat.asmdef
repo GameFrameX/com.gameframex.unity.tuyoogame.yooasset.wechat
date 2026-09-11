@@ -1,0 +1,26 @@
+{
+  "name": "YooAsset.WeChat",
+  "rootNamespace": "YooAsset.WeChat",
+  "references": [
+    "YooAsset",
+    "YooAsset.Runtime",
+    "GameFrameX.Runtime",
+    "GameFrameX.Asset.Runtime",
+    "Wx"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [
+    {
+      "name": "com.qq.weixin.minigame",
+      "expression": "",
+      "define": "ENABLE_WECHAT_MINI_GAME"
+    }
+  ],
+  "noEngineReferences": false
+}
