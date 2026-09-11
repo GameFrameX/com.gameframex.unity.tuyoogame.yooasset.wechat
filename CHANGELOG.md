@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/compare/1.0.2...1.1.0) (2026-09-11)
+
+
+### Features
+
+* **refactor:** Provider/Creater/asmdef/Operation 改造 + package.json 调整 ([7287dcc](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/commit/7287dcc5317b4af313a8e679951a43e59d0d7b9a))
+
 ## [1.0.2](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/compare/1.0.1...1.0.2) (2026-07-30)
 
 
