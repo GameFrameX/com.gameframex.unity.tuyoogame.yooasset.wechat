@@ -56,7 +56,7 @@ WeChat 미니게임 플랫폼용 YooAsset 어댑터 패키지. Unity WebGL 플�
        }
      ],
      "dependencies": {
-       "com.gameframex.unity.tuyoogame.yooasset.wechat": "1.0.2"
+       "com.gameframex.unity.tuyoogame.yooasset.wechat": "1.2.0"
      }
    }
    ```
@@ -71,6 +71,10 @@ WeChat 미니게임 플랫폼용 YooAsset 어댑터 패키지. Unity WebGL 플�
    ```
 3. Unity **Package Manager**에서 **Git URL**을 사용해 추가합니다. URL: `https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat.git`
 4. 리포지토리를 Unity 프로젝트의 `Packages` 디렉토리에 직접 클론하세요. 자동으로 로드됩니다.
+
+### 업그레이드 안내
+
+> **1.2.0 파괴적 변경:** 이 패키지는 더 이상 `com.gameframex.unity.asset`에 의존하지 않으며, 유일한 의존성은 `com.gameframex.unity.tuyoogame.yooasset`(≥ 3.1.0)입니다. 업그레이드 시 코어 패키지를 ≥ 3.1.0로 함께 업그레이드해야 하며, 프로젝트에 asset 패키지가 설치되어 있다면 ≥ 4.1.0로 함께 업그레이드하십시오. asset ≥ 4.1.0가 함께 설치된 프로젝트는 영향을 받지 않습니다.
 
 ## 사용 예시
 
@@ -87,8 +91,12 @@ createParameters.WebFileSystemParameters = WechatFileSystemCreater.CreateWechatF
 
 | 패키지 | 설명 |
 | --- | --- |
-| `com.gameframex.unity.tuyoogame.yooasset` | YooAsset 코어 런타임 및 API. |
-| `com.gameframex.unity.asset` | GameFrameX 에셋/런타임 통합. |
+| `com.gameframex.unity.tuyoogame.yooasset` | YooAsset 코어 런타임 및 API(≥ 3.1.0). |
+
+
+## 등록 기반 디스패치 메커니즘
+
+이 패키지가 제공하는 `WeChatWebPlayModeFileSystemProvider`(Priority 1)는 `BeforeSceneLoad` 시점에 코어 패키지의 `WebPlayModeFileSystemProviderRegistry`에 자동 등록되며, 이 시점은 첫 Web 모드 초기화보다 이릅니다. 초기화 시 에셋 추상화 계층은 Priority 기준으로 상호 배타적으로 확인하여(가장 높은 Priority, 동일하면 먼저 등록된 항목) 단 하나의 플랫폼 파일 시스템만 선택해 초기화합니다.
 
 ## 문서 및 자료
 

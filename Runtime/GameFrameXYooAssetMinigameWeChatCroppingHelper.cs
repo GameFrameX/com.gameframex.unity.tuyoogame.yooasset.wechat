@@ -62,6 +62,7 @@ namespace YooAsset.WeChat
                 typeof(LoadWechatPackageManifestOperation),
                 typeof(WeChatConfigHandler),
                 typeof(WeChatWebPlayModeFileSystemProvider),
+                typeof(WeChatWebPlayModeFileSystemProvider.Registrar),
             };
 #endif
         }

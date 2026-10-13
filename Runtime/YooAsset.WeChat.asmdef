@@ -4,8 +4,6 @@
   "references": [
     "YooAsset",
     "YooAsset.Runtime",
-    "GameFrameX.Runtime",
-    "GameFrameX.Asset.Runtime",
     "Wx"
   ],
   "includePlatforms": [],

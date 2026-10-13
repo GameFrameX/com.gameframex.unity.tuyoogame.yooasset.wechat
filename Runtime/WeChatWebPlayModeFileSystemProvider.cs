@@ -27,8 +27,6 @@
 //   Official Documentation: https://gameframex.doc.alianblank.com/
 //  ==========================================================================================
 
-using GameFrameX.Asset.Runtime;
-using GameFrameX.Runtime;
 using UnityEngine;
 using YooAsset;
 
@@ -57,9 +55,9 @@ namespace YooAsset.WeChat
             // https://www.yooasset.com/docs/MiniGame#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F
             WeChatWASM.WXBase.PreloadConcurrent(10);
             // 强行控制并发数量
-            GameEntry.GetComponent<AssetComponent>().gameObject.GetOrAddComponent<WeChatConfigHandler>();
+            EnsureConfigHandler();
             // 创建微信小游戏文件系统
-            if (context.HostServerURL.IsNullOrWhiteSpace())
+            if (string.IsNullOrWhiteSpace(context.HostServerURL))
             {
                 return WechatFileSystemCreater.CreateWechatFileSystemParameters();
             }
@@ -67,9 +65,28 @@ namespace YooAsset.WeChat
             return WechatFileSystemCreater.CreateWechatPathFileSystemParameters(context.HostServerURL);
         }
 
+        private static WeChatConfigHandler _configHandler;
+
+        /// <summary>
+        /// 自建隐藏宿主挂载配置组件（不依赖任何 GameFrameX 宿主）
+        /// </summary>
+        private static void EnsureConfigHandler()
+        {
+            if (_configHandler != null)
+            {
+                return;
+            }
+
+            var host = new GameObject("YooAsset.WeChat.ConfigHandler");
+            DontDestroyOnLoad(host);
+            host.hideFlags = HideFlags.HideInHierarchy;
+            _configHandler = host.AddComponent<WeChatConfigHandler>();
+        }
+
         /// <summary>
         /// 运行时自动注册
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         internal static class Registrar
         {
             [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]

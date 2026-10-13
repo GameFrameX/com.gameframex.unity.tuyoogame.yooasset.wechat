@@ -56,7 +56,7 @@ YooAsset の WeChat ミニゲーム向けアダプタパッケージ。Unity Web
        }
      ],
      "dependencies": {
-       "com.gameframex.unity.tuyoogame.yooasset.wechat": "1.0.2"
+       "com.gameframex.unity.tuyoogame.yooasset.wechat": "1.2.0"
      }
    }
    ```
@@ -71,6 +71,10 @@ YooAsset の WeChat ミニゲーム向けアダプタパッケージ。Unity Web
    ```
 3. Unity の **Package Manager** で **Git URL** を使って追加します。URL：`https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat.git`
 4. リポジトリを Unity プロジェクトの `Packages` ディレクトリにクローンしてください。自動的に読み込まれます。
+
+### アップグレードに関する注意
+
+> **1.2.0 の破壊的変更:** 本パッケージは `com.gameframex.unity.asset` に依存しなくなり、依存は `com.gameframex.unity.tuyoogame.yooasset`（≥ 3.1.0）のみとなります。アップグレード時はコアパッケージを ≥ 3.1.0 に、asset パッケージを導入しているプロジェクトは ≥ 4.1.0 に同時にアップグレードしてください。asset ≥ 4.1.0 が同時に導入されたプロジェクトには影響しません。
 
 ## 使用例
 
@@ -87,8 +91,12 @@ createParameters.WebFileSystemParameters = WechatFileSystemCreater.CreateWechatF
 
 | パッケージ | 説明 |
 | --- | --- |
-| `com.gameframex.unity.tuyoogame.yooasset` | YooAsset コアランタイムと API。 |
-| `com.gameframex.unity.asset` | GameFrameX アセット/ランタイム統合。 |
+| `com.gameframex.unity.tuyoogame.yooasset` | YooAsset コアランタイムと API（≥ 3.1.0）。 |
+
+
+## 登録とディスパッチの仕組み
+
+本パッケージが提供する `WeChatWebPlayModeFileSystemProvider`（Priority 1）は、`BeforeSceneLoad` のタイミングでコアパッケージの `WebPlayModeFileSystemProviderRegistry` に自己登録されます。この登録は最初の Web モード初期化より早く行われます。初期化時、アセット抽象層は Priority に基づいて排他的に解決し（Priority が最も高いもの、同優先度なら先に登録されたもの）、プラットフォームのファイルシステムを 1 つだけ選択して初期化します。
 
 ## ドキュメントとリソース
 

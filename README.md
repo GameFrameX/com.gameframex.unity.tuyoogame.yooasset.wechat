@@ -56,7 +56,7 @@ Choose one of the following methods:
        }
      ],
      "dependencies": {
-       "com.gameframex.unity.tuyoogame.yooasset.wechat": "1.0.2"
+       "com.gameframex.unity.tuyoogame.yooasset.wechat": "1.2.0"
      }
    }
    ```
@@ -71,6 +71,10 @@ Choose one of the following methods:
    ```
 3. In the Unity **Package Manager**, add the package via **Git URL**: `https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat.git`
 4. Clone the repository directly into your Unity project's `Packages` directory; it will be loaded automatically.
+
+### Upgrade Notes
+
+> **Breaking change in 1.2.0:** This package no longer depends on `com.gameframex.unity.asset`; its only dependency is now `com.gameframex.unity.tuyoogame.yooasset` (≥ 3.1.0). When upgrading, the core YooAsset package must also be upgraded to ≥ 3.1.0, and if the project installs the asset package, upgrade it to ≥ 4.1.0. Projects that also install asset ≥ 4.1.0 are otherwise unaffected.
 
 ## Usage Examples
 
@@ -87,8 +91,12 @@ createParameters.WebFileSystemParameters = WechatFileSystemCreater.CreateWechatF
 
 | Package | Description |
 | --- | --- |
-| `com.gameframex.unity.tuyoogame.yooasset` | Core YooAsset runtime & API. |
-| `com.gameframex.unity.asset` | GameFrameX asset/runtime integration. |
+| `com.gameframex.unity.tuyoogame.yooasset` | Core YooAsset runtime & API (≥ 3.1.0). |
+
+
+## Register-and-Dispatch Mechanism
+
+The `WeChatWebPlayModeFileSystemProvider` (Priority 1) provided by this package self-registers into the core package's `WebPlayModeFileSystemProviderRegistry` at `BeforeSceneLoad`, which runs earlier than the first Web-mode initialization. At initialization, the asset abstraction layer resolves providers exclusively by Priority (highest wins; on equal priority the first registered wins) and initializes exactly one platform file system. This means only one platform provider is ever selected per initialization.
 
 ## Documentation & Resources
 

@@ -56,7 +56,7 @@ YooAsset 微信小遊戲適配套件，針對 Unity WebGL 平台上的微信小�
        }
      ],
      "dependencies": {
-       "com.gameframex.unity.tuyoogame.yooasset.wechat": "1.0.2"
+       "com.gameframex.unity.tuyoogame.yooasset.wechat": "1.2.0"
      }
    }
    ```
@@ -71,6 +71,10 @@ YooAsset 微信小遊戲適配套件，針對 Unity WebGL 平台上的微信小�
    ```
 3. 在 Unity 的 `Package Manager` 中使用 `Git URL` 方式新增套件，網址為：`https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat.git`
 4. 直接下載倉庫並放置到 Unity 專案的 `Packages` 目錄下，將自動載入識別。
+
+### 升級說明
+
+> **1.2.0 破壞性變更：** 本包不再依賴 `com.gameframex.unity.asset`，僅依賴 `com.gameframex.unity.tuyoogame.yooasset`（≥ 3.1.0）。升級時必須同時將主包升級到 ≥ 3.1.0；若工程安裝了 asset 包，需同步升級到 ≥ 4.1.0。同時安裝 asset ≥ 4.1.0 的工程不受影響。
 
 ## 使用範例
 
@@ -87,8 +91,12 @@ createParameters.WebFileSystemParameters = WechatFileSystemCreater.CreateWechatF
 
 | 包 | 說明 |
 | --- | --- |
-| `com.gameframex.unity.tuyoogame.yooasset` | YooAsset 核心執行時與 API。 |
-| `com.gameframex.unity.asset` | GameFrameX 資源/執行時整合。 |
+| `com.gameframex.unity.tuyoogame.yooasset` | YooAsset 核心執行時與 API（≥ 3.1.0）。 |
+
+
+## 註冊即分發機制
+
+本包提供的 `WeChatWebPlayModeFileSystemProvider`（Priority 1）會在 `BeforeSceneLoad` 階段自動註冊到主包的 `WebPlayModeFileSystemProviderRegistry`，該時序早於首次 Web 模式初始化。初始化時 asset 抽象層按 Priority 互斥解析（Priority 最高者勝出，同優先級取註冊序首個），只會初始化並選用一個平台檔案系統。
 
 ## 文檔與資源
 
