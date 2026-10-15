@@ -1,3 +1,20 @@
+# [2.0.0](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/compare/1.1.0...2.0.0) (2026-10-15)
+
+
+### Bug Fixes
+
+* **package:** 对齐 yooasset 3.1.0 依赖并修正品牌命名 ([beca2ed](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/commit/beca2ed774b6c9c28f2d56825ab1f6df26a17f33))
+
+
+### Features
+
+* **provider:** 接入主包注册表并解除 asset 层依赖 ([1369633](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/commit/1369633032124987145dfab388f4c6cd7501e7f7))
+
+
+### BREAKING CHANGES
+
+* **provider:** 不再依赖 com.gameframex.unity.asset。
+
 # [1.1.0](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/compare/1.0.2...1.1.0) (2026-09-11)
 
 
