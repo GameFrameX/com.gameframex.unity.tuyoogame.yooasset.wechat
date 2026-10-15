@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/compare/2.0.0...2.0.1) (2026-10-15)
+
+
+### Bug Fixes
+
+* **provider:** 显式限定 DontDestroyOnLoad 调用 ([d153c80](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/commit/d153c80e5db6fe78760a370213ce8f43514a24d9))
+
 # [2.0.0](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/compare/1.1.0...2.0.0) (2026-10-15)
 
 
