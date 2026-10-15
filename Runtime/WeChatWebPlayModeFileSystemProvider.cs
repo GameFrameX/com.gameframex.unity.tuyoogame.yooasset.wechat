@@ -78,7 +78,7 @@ namespace YooAsset.WeChat
             }
 
             var host = new GameObject("YooAsset.WeChat.ConfigHandler");
-            DontDestroyOnLoad(host);
+            UnityEngine.Object.DontDestroyOnLoad(host);
             host.hideFlags = HideFlags.HideInHierarchy;
             _configHandler = host.AddComponent<WeChatConfigHandler>();
         }
