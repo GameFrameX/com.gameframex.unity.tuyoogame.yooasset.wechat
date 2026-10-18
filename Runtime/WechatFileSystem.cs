@@ -10,21 +10,23 @@ namespace YooAsset.WeChat
     public static class WechatFileSystemCreater
     {
         [UnityEngine.Scripting.Preserve]
-        public static FileSystemParameters CreateWechatFileSystemParameters(IRemoteServices remoteServices = null)
+        public static FileSystemParameters CreateWechatFileSystemParameters(IRemoteServices remoteServices = null, WechatFileSystemOption option = null)
         {
             string fileSystemClass = typeof(WechatFileSystem).FullName;
             var fileSystemParams = new FileSystemParameters(fileSystemClass, null);
             fileSystemParams.AddParameter(FileSystemParametersDefine.REMOTE_SERVICES, remoteServices);
+            fileSystemParams.AddParameter(WechatFileSystemOption.ParameterKey, option ?? new WechatFileSystemOption());
             return fileSystemParams;
         }
 
         [UnityEngine.Scripting.Preserve]
-        public static FileSystemParameters CreateWechatPathFileSystemParameters(string buildinPackRoot)
+        public static FileSystemParameters CreateWechatPathFileSystemParameters(string buildinPackRoot, WechatFileSystemOption option = null)
         {
             string fileSystemClass = typeof(WechatFileSystem).FullName;
             var fileSystemParams = new FileSystemParameters(fileSystemClass, null);
             IRemoteServices remoteServices = new WechatFileSystem.WebRemoteServices(buildinPackRoot);
             fileSystemParams.AddParameter(FileSystemParametersDefine.REMOTE_SERVICES, remoteServices);
+            fileSystemParams.AddParameter(WechatFileSystemOption.ParameterKey, option ?? new WechatFileSystemOption());
             return fileSystemParams;
         }
     }
@@ -108,6 +110,11 @@ namespace YooAsset.WeChat
         /// </summary>
         public IRemoteServices RemoteServices { private set; get; } = null;
 
+        /// <summary>
+        /// 自定义参数：文件系统选项（直载 bundle 重试参数；未传时保持默认实例，永不为 null）
+        /// </summary>
+        public WechatFileSystemOption Option { private set; get; } = new WechatFileSystemOption();
+
         #endregion
 
         [UnityEngine.Scripting.Preserve]
@@ -190,6 +197,10 @@ namespace YooAsset.WeChat
             if (name == FileSystemParametersDefine.REMOTE_SERVICES)
             {
                 RemoteServices = (IRemoteServices)value;
+            }
+            else if (name == WechatFileSystemOption.ParameterKey)
+            {
+                Option = (WechatFileSystemOption)value ?? new WechatFileSystemOption();
             }
             else
             {
