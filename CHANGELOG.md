@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/compare/2.0.1...2.1.0) (2026-10-18)
+
+
+### Features
+
+* **filesystem:** 直载重试参数 Option 化并派生基类 ([ba49946](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/commit/ba499464b3114a1c96f0820eb0fb011b9a43fe13))
+
 ## [2.0.1](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/compare/2.0.0...2.0.1) (2026-10-15)
 
 
