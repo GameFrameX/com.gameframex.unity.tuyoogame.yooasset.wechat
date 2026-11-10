@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/compare/2.1.0...2.1.1) (2026-11-10)
+
+
+### Bug Fixes
+
+* **tuyoogame.yooasset.wechat:** 添加完整 link.xml 防代码裁剪保护 ([c02f35e](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/commit/c02f35e0c44a155126d5ce354eb9e12edc27f4de))
+
 # [2.1.0](https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.wechat/compare/2.0.1...2.1.0) (2026-10-18)
 
 
